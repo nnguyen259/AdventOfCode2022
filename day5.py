@@ -1,6 +1,3 @@
-import collections
-
-
 def part1():
     with open("input/day5.txt") as input:
         data = input.read().splitlines()
