@@ -1,33 +1,12 @@
 def simulate(hx, hy, tx, ty, direction=None):
     if direction == "R":
         hx += 1
-        if hx - tx > 1:
-            tx = hx - 1
-            if hy != ty:
-                ty = hy
-        return hx, hy, tx, ty
     if direction == "L":
         hx -= 1
-        if tx - hx > 1:
-            tx = hx + 1
-            if hy != ty:
-                ty = hy
-        return hx, hy, tx, ty
     if direction == "U":
         hy += 1
-        if hy - ty > 1:
-            ty = hy - 1
-            if hx != tx:
-                tx = hx
-        return hx, hy, tx, ty
     if direction == "D":
         hy -= 1
-        if ty - hy > 1:
-            ty = hy + 1
-            if hx != tx:
-                tx = hx
-        return hx, hy, tx, ty
-
     if hy - ty in (-2, 2):
         ty += (hy - ty) // 2
         if hx > tx:
