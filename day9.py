@@ -50,26 +50,15 @@ def part2():
     for line in data:
         direction, steps = line.split(" ")
         for _ in range(int(steps)):
-            i = 0
-            hx = ropes[i][0]
-            hy = ropes[i][1]
-            tx = ropes[i + 1][0]
-            ty = ropes[i + 1][1]
-            hx, hy, tx, ty = simulate(hx, hy, tx, ty, direction)
-
-            ropes[i][0] = hx
-            ropes[i][1] = hy
-            ropes[i + 1][0] = tx
-            ropes[i + 1][1] = ty
-            i += 1
-
-            while i < 9:
+            for i in range(9):
                 hx = ropes[i][0]
                 hy = ropes[i][1]
                 tx = ropes[i + 1][0]
                 ty = ropes[i + 1][1]
-                hx, hy, tx, ty = simulate(hx, hy, tx, ty)
-
+                if i > 0:
+                    hx, hy, tx, ty = simulate(hx, hy, tx, ty)
+                else:
+                    hx, hy, tx, ty = simulate(hx, hy, tx, ty, direction)
                 ropes[i][0] = hx
                 ropes[i][1] = hy
                 ropes[i + 1][0] = tx
