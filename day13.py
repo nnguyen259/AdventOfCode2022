@@ -1,6 +1,3 @@
-from functools import cmp_to_key
-
-
 def compare(a, b):
     if isinstance(a, int) and isinstance(b, int):
         return a - b
@@ -42,10 +39,15 @@ def part2():
             map(eval, [line for line in input.read().splitlines() if line != ""])
         )
 
-    data.extend([[[2]], [[6]]])
+    prod2 = 1
+    prod6 = 2
+    for line in data:
+        if compare(line, [[2]]) < 0:
+            prod2 += 1
+        if compare(line, [[6]]) < 0:
+            prod6 += 1
 
-    data.sort(key=cmp_to_key(compare))
-    return (data.index([[2]]) + 1) * (data.index([[6]]) + 1)
+    return prod2 * prod6
 
 
 if __name__ == "__main__":
